@@ -443,19 +443,22 @@
   }
 }
 .contenedor-login{
-  margin: 0%;
+
+  float: left; 
+  position: relative;
+  margin-top: 2%;
+  margin-left: 15%;
   position: fixed;
 }
 
 .contenedor-form-login{
-  margin: 0%;
+  width: 30%;
+  padding: 3%;
+  margin-top: 2%;
+  margin-left: 2.5%;
   background-color: rgba(240, 35, 45, 0.541);
   border-radius: 20px;
   position: absolute;
-  width: 42%;
-  height: 60%;
-  right: 49%;
-  top: 30%;
 }
 
 form#form-login{

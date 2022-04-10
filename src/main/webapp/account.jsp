@@ -26,7 +26,7 @@
 
   <div class="sidebar">
     <div class="logo-details">
-        <a href="index.html"><img class="logo icon" src="Assets\img\logoNear3.png"></a>
+        <a href="index.jsp"><img class="logo icon" src="Assets\img\logoNear3.png"></a>
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list">

@@ -38,7 +38,7 @@ public class PersonalListfiles extends HttpServlet {
 
         File uploadDir = new File(uploadPath);
 
-        //email = "@1";
+        email = "sprieto@gmail.com";
         System.out.println(email);
 
         // Listing file names in path

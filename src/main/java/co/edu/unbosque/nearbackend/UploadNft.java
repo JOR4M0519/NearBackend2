@@ -68,7 +68,7 @@ public class UploadNft extends HttpServlet {
         }
 
 
-        uService.createNFT(fileName,extension,tittle,author,price,"",getServletContext().getRealPath("") + File.separator);
+        uService.createNFT(fileName,extension,tittle,author,price,author,getServletContext().getRealPath("") + File.separator);
 
         // Redirecting
         response.sendRedirect("./index.jsp");

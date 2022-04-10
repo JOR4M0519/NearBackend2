@@ -30,7 +30,7 @@
 
   }else{
     name ="Mi Cuenta";
-    data = "<a class=\"dropdown-item \" id=\"dropdown-item\" href=\"./login.html\"> Iniciar Sesión </a><a class=\"dropdown-item\" id=\"dropdown-item\" href=\"./sign_up.jsp\"> Crear cuenta </a>";
+    data = "<a class=\"dropdown-item \" id=\"dropdown-item\" href=\"./login.jsp\"> Iniciar Sesión </a><a class=\"dropdown-item\" id=\"dropdown-item\" href=\"./sign_up.jsp\"> Crear cuenta </a>";
 
 
 
