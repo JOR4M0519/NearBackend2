@@ -24,33 +24,47 @@ public class Login extends HttpServlet {
         response.setContentType("text/html");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String role = request.getParameter("role");
 
+        System.out.println("Login: " +username+"-"+password+"-"+role);
 
+        RequestDispatcher dispatcher = null;
         uService = new UserService();
         uService.setRuta(getServletContext().getRealPath("").replace("NEArBackend-1.0-SNAPSHOT","")+ "classes"+File.separator+"Users.csv");
         
         List<User> users = new UserService().getUsers().get();
 
-        User userFounded = users.stream().filter(user -> username.equals(user.getUsername()) && password.equals(user.getPassword()))
+        User userFounded = users.stream().filter(user -> username.equals(user.getUsername()) && password.equals(user.getPassword()) && role.equals(user.getRole()) )
                 .findFirst().orElse(null);
 
-        if (username.equals(userFounded.getUsername()) && password.equals(userFounded.getPassword())) {
+        if (userFounded == null) {
+            request.setAttribute("status", "failed");
+            dispatcher = request.getRequestDispatcher("login.html");
+        }else{
+            if (username.equals(userFounded.getUsername()) && password.equals(userFounded.getPassword())) {
+                request.setAttribute("name", userFounded.getName());
+                request.setAttribute("role", userFounded.getRole());
+                dispatcher = request.getRequestDispatcher("./index.jsp");
+            }
+        }
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
 
+       /* if (username.equals(userFounded.getUsername()) && password.equals(userFounded.getPassword())) {
             if (userFounded == null) {
-
-                response.sendRedirect("./401.html");
-
+                request.setAttribute("status", "failed");
             } else {
                 request.setAttribute("name", userFounded.getName());
                 RequestDispatcher dispatcher = request.getRequestDispatcher("./index.jsp");
-
                 try {
-
                     dispatcher.forward(request, response);
                 } catch (ServletException e) {
                     e.printStackTrace();
                 }
             }
-        }
+        }*/
     }
 }

@@ -40,7 +40,7 @@ public class SignUp extends HttpServlet {
 
         List<User> users = uService.getUsers().get();
 
-        User userFounded = users.stream().filter(user -> username.equals(user.getUsername()))
+        User userFounded = users.stream().filter(user -> username.equals(user.getUsername()) && role.equals(user.getRole()))
                 .findFirst().orElse(null);
 
         RequestDispatcher dispatcher =null;

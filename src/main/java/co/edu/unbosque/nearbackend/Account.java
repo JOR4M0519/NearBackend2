@@ -18,28 +18,25 @@ public class Account extends HttpServlet {
         message = "Hello World!";
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("./index.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         String username = request.getParameter("usernameData");
+        String role = request.getParameter("role");
 
-        List<User> users = new UserService().getUsers().get();
+        uService = new UserService();
+        uService.setRuta(getServletContext().getRealPath("").replace("NEArBackend-1.0-SNAPSHOT","")+ "classes"+File.separator+"Users.csv");
 
-        User userFounded = users.stream().filter(user -> username.equals(user.getUsername()))
+        List<User> users = uService.getUsers().get();
+
+        User userFounded = users.stream().filter(user -> username.equals(user.getUsername()) && role.equals(user.getRole()))
                 .findFirst().orElse(null);
 
         request.setAttribute("name", userFounded.getName());
         request.setAttribute("lastname", userFounded.getLastname());
         request.setAttribute("role", userFounded.getRole());
         request.setAttribute("FCoins", userFounded.getFcoins());
+        request.setAttribute("username", userFounded.getUsername());
+        request.setAttribute("password", userFounded.getPassword());
 
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("./account.jsp");
@@ -49,6 +46,5 @@ public class Account extends HttpServlet {
         } catch (ServletException e) {
             e.printStackTrace();
         }
-        System.out.println(username);
     }
 }
