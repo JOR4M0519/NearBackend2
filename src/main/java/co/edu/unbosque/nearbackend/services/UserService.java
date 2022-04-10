@@ -37,6 +37,7 @@ public class UserService {
                         .withIgnoreLeadingWhiteSpace(true)
                         .build();
                 users = csvToBean.parse();
+                System.out.println("no estoy vacio: " + users.get(users.size()-1).getUsername());
             }
         }
         return Optional.of(users);
@@ -72,18 +73,18 @@ public class UserService {
     public void createUser(String username, String name, String lastname, String password, String role, String Fcoins, String path) throws IOException {
             String newLine =  username + "," + name + ","+lastname+ "," + role + ","+ password +","+"0"+"\n";
         String fullpath = path.replace("NEArBackend-1.0-SNAPSHOT"+File.separator,"")+ "classes"+File.separator+"Users.csv";
-
+        System.out.println("Users:"+fullpath);
         FileOutputStream os = new FileOutputStream(fullpath, true);
             os.write(newLine.getBytes());
             os.close();
         }
 
     public void createNFT(String id, String extension, String title, String author, String price, String email_owner, String path) throws IOException {
-        String newLine = id + "," + extension + "," + title + ","+author+ "," + price + ","+"0"+","+ email_owner +"\n";
+        String newLine = id + "," + extension + "," + title + ","+author+ "," + price + ","+ email_owner +","+"0"+"\n";
 
         String fullpath = path.replace("NEArBackend-1.0-SNAPSHOT"+File.separator,"")+ "classes"+File.separator+"Nfts.csv";
 
-
+        System.out.println("nft ruta: "+fullpath);
         FileOutputStream os = new FileOutputStream( fullpath, true);
         os.write(newLine.getBytes());
         os.close();

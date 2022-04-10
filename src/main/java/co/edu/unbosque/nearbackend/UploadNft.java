@@ -12,9 +12,6 @@ import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-
-import static java.lang.String.valueOf;
 
 @WebServlet(name = "uploadNft", value = "/uploadNft")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
@@ -49,16 +46,14 @@ public class UploadNft extends HttpServlet {
         File uploadDir = new File(uploadPath);
         // If path doesn`t exist, create it
         if (!uploadDir.exists()) uploadDir.mkdir();
+
+
         try {
             // Getting each part from the request
-            int i = 0;
-            for (Part part : request.getParts() ) {
+            for (Part part : request.getParts()) {
                 // Storing the file using the same name
-                if(part.getSubmittedFileName() != null)
-                {
-                    extension = part.getSubmittedFileName().toString().split("\\.")[1];
-                }
-                fileName = uService.generateRandomString()+"&"+tittle+"."+extension;
+                extension = part.getSubmittedFileName().split(".")[1];
+                fileName = uService.generateRandomString()+"."+extension+"&"+tittle;
                 part.write(uploadPath + File.separator + fileName);
             }
         } catch (FileNotFoundException e) {
@@ -68,10 +63,10 @@ public class UploadNft extends HttpServlet {
         }
 
 
-        uService.createNFT(fileName,extension,tittle,author,price,author,getServletContext().getRealPath("") + File.separator);
+        uService.createNFT(fileName,extension,tittle,author,price,"",getServletContext().getRealPath("") + File.separator);
 
         // Redirecting
-        response.sendRedirect("./index.jsp");
+        response.sendRedirect("./result.html");
 
     }
 

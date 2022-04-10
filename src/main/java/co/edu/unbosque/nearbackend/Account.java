@@ -31,10 +31,7 @@ public class Account extends HttpServlet {
         response.setContentType("text/html");
         String username = request.getParameter("usernameData");
 
-        uService = new UserService();
-        uService.setRuta(getServletContext().getRealPath("").replace("NEArBackend-1.0-SNAPSHOT","")+ "classes"+File.separator+"Users.csv");
-
-        List<User> users = uService.getUsers().get();
+        List<User> users = new UserService().getUsers().get();
 
         User userFounded = users.stream().filter(user -> username.equals(user.getUsername()))
                 .findFirst().orElse(null);
@@ -43,8 +40,8 @@ public class Account extends HttpServlet {
         request.setAttribute("lastname", userFounded.getLastname());
         request.setAttribute("role", userFounded.getRole());
         request.setAttribute("FCoins", userFounded.getFcoins());
-        PersonalListfiles p = new PersonalListfiles();
-        p.setEmail(username);
+
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("./account.jsp");
 
         try {
@@ -52,5 +49,6 @@ public class Account extends HttpServlet {
         } catch (ServletException e) {
             e.printStackTrace();
         }
+        System.out.println(username);
     }
 }

@@ -26,16 +26,16 @@
   String name ="";
   if( request.getAttribute("name") != null) {
     name = String.valueOf(request.getAttribute("name"));
-    data = "<form action=\"./account\" method=\"post\" name=\"myaccount\"> <input type=\"hidden\" name=\"location/emailUsername\" value=\"account\"> <input type=\"hidden\" id=\"usernameData\" name=\"usernameData\"> <input class=\"dropdown-item\" id=\"dropdown-item\" type=\"submit\" value=\"Mi cuenta\"> </form> <form action=\"./account\" method=\"get\"> <input type=\"hidden\" name=\"usernameData\"> <input class=\"dropdown-item \" id=\"dropdown-item\" type=\"submit\" value=\"Salir\"> </form>";
+    data = "<form action=\"./account\" method=\"post\" name=\"myaccount\"> <input type=\"hidden\" id=\"usernameData\" name=\"usernameData\"> <input class=\"dropdown-item\" id=\"dropdown-item\" type=\"submit\" value=\"Mi cuenta\"> </form> <form action=\"./account\" method=\"get\"> <input type=\"hidden\" name=\"usernameData\"> <input class=\"dropdown-item \" id=\"dropdown-item\" type=\"submit\" value=\"Salir\"> </form>";
 
   }else{
     name ="Mi Cuenta";
     data = "<a class=\"dropdown-item \" id=\"dropdown-item\" href=\"./login.html\"> Iniciar Sesión </a><a class=\"dropdown-item\" id=\"dropdown-item\" href=\"./sign_up.jsp\"> Crear cuenta </a>";
 
 
-
 }
 %>
+
 <!-- NAVIGATION -->
 <div class=" fixed-top" style="background-color: #BA2737 ;">
 
@@ -239,9 +239,8 @@
         <div class="album py-5 bg-light">
           <div class="container">
 
-            <div class="row" id="card">
+            <div class="row">
               <div class="col-md-4">
-
                 <div class="card mb-4 shadow-sm">
                   <div class="imgBx">
                     <img class="bd-placeholder-img card-img-top" width="100%" height="100%" src="https://www.arweave.net/yoNSEKfSCGY23L14Y_P06G42r79G7cl4HYFeM5kjXdo?ext=png" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
@@ -428,10 +427,11 @@
   Myelement.setAttribute('value',user);
   console.log(Myelement.value);
 
-</script>
 
+
+</script>
 <!-- BOOTSTRAP SCRIPTS -->
-<script src="Assets/js/generalCatalogue.js"></script>
+<script src="Assets/js/functions.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
