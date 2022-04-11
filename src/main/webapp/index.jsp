@@ -25,22 +25,33 @@
   String data ="";
   String name ="";
   String role="";
+  String fcoinsButton="";
+  String fcoins = "";
+  String percent ="85%";
+
   if( request.getAttribute("name") != null) {
     name = String.valueOf(request.getAttribute("name"));
     role = String.valueOf(request.getAttribute("role"));
+    fcoins = String.valueOf(request.getAttribute("fcoins"));
 
+    System.out.println(role);
+    if (role.equals("Comprador")) {
+
+      percent = "79%";
+      fcoinsButton = "<div class=\"dropdown show\" style=\"float: left;\"><a class=\"btn btn-secondary\" id=\"dropdown\"  href=\"#\" role=\"button\"  aria-haspopup=\"true\" aria-expanded=\"false\"><span  id=\"fcoins\"> FCoins: $" + fcoins + " </span></a></div>";
+    }
     data = "<form action=\"./account\" method=\"post\" name=\"myaccount\"> <input type=\"hidden\" name=\"role\" value=\""+role+"\"> <input type=\"hidden\" id=\"usernameData\" name=\"usernameData\"> <input class=\"dropdown-item\" id=\"dropdown-item\" type=\"submit\" value=\"Mi cuenta\"> </form> <form action=\"./account\" method=\"get\"> <input type=\"hidden\" name=\"usernameData\"> <input class=\"dropdown-item \" id=\"dropdown-item\" type=\"submit\" value=\"Salir\"> </form>";
-
   }else{
     name ="Mi Cuenta";
-    data = "<a class=\"dropdown-item \" id=\"dropdown-item\" href=\"./login.html\"> Iniciar Sesión </a><a class=\"dropdown-item\" id=\"dropdown-item\" href=\"./sign_up.jsp\"> Crear cuenta </a>";
-}
+    data = "<a class=\"dropdown-item \" id=\"dropdown-item\" href=\"./login.jsp\"> Iniciar Sesión </a><a class=\"dropdown-item\" id=\"dropdown-item\" href=\"./sign_up.jsp\"> Crear cuenta </a>";
+  }
 %>
 <!-- NAVIGATION -->
 <div class=" fixed-top" style="background-color: #BA2737 ;">
 
-<div style="display: flex; margin-left: 83%; padding-bottom: 0.5%; padding-top: 0.2%;">
-  
+  <div style="display: flex; margin-left: <%=percent%>; padding-bottom: 0.5%; padding-top: 0.2%;">
+
+    <%=fcoinsButton%>
     <div class="dropdown show" style="float: left;">
       <a class="btn btn-secondary dropdown-toggle" id="dropdown"  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -51,41 +62,42 @@
         <span  id="nameAccount"> <%= name %> </span>
       </a>
 
+
       <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <%=data%>
+        <%=data%>
       </div>
     </div>
 
-</div>
+  </div>
 
 
-<nav class="navbar" style=" display: inline-block; width: 100%; background-color: #BA2737;" >  
-  <div class="input-group">
-    
-    <a class="navbar-brand" href="#">
-      <img src="Assets/img/logoNear2.png" class="logo">
-    </a>
-    
-    <input class="container-input-search" type="search" id="form1" class="form-control" placeholder="Buscar arte" >    
-    <button type="button" style="background-color: #ffffff2c" class="btn btn-primary" >
-      <i class="fas fa-search"></i>
-    </button>  
+  <nav class="navbar" style=" display: inline-block; width: 100%; background-color: #BA2737;" >
+    <div class="input-group">
 
-    <div class="navbar navbar-expand-lg" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a id="nav-a" class="nav-link" href="#info">Info</a>
-        </li>
-        <li class="nav-item">
-          <a id="nav-a" class="nav-link" href="#Artist">Artistas</a>
-        </li>
-        <li class="nav-item">
-          <a id="nav-a"  class="nav-link" href="#Contact">Contáctenos</a>
-        </li>
-      </ul>
-    </div> 
-    
-</nav>
+      <a class="navbar-brand" href="#">
+        <img src="Assets/img/logoNear2.png" class="logo">
+      </a>
+
+      <input class="container-input-search" type="search" id="form1" class="form-control" placeholder="Buscar arte" >
+      <button type="button" style="background-color: #ffffff2c" class="btn btn-primary" >
+        <i class="fas fa-search"></i>
+      </button>
+
+      <div class="navbar navbar-expand-lg" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a id="nav-a" class="nav-link" href="#info">Info</a>
+          </li>
+          <li class="nav-item">
+            <a id="nav-a" class="nav-link" href="#Artist">Artistas</a>
+          </li>
+          <li class="nav-item">
+            <a id="nav-a"  class="nav-link" href="#Contact">Contáctenos</a>
+          </li>
+        </ul>
+      </div>
+
+  </nav>
 </div>
 
 <!-- HEADER -->
@@ -118,7 +130,7 @@
     </a>
   </div>
 
-   
+
 
 </header>
 
@@ -134,8 +146,8 @@
               <tr>
                 <td>
                   <img
-                    src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/credit-card.svg"
-                    alt="Metodos de pago">
+                          src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/credit-card.svg"
+                          alt="Metodos de pago">
                 </td>
                 <td>
                   <h6>Paga a cuotas</h6>

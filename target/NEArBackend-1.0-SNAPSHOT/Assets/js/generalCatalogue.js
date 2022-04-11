@@ -16,6 +16,7 @@ const getData = async () => {
 
   if(window.location.toString().includes("account")){
     data = await fetch("personalListFiles").then(response => response.json());
+    Element.setAttribute("email",localStorage.getItem(username));
   }else{
     data = await fetch("generalListFiles").then(response => response.json());
   }
@@ -27,24 +28,24 @@ const getData = async () => {
 
     imagesDiv.innerHTML += `
     <div class="col-md-4"> 
-        <div className="card mb-4 shadow-sm">
-          <div className="imgBx">
-            <img className="bd-placeholder-img card-img-top" width="100%" height="100%"
+        <div class="card mb-4 shadow-sm">
+          <div class="imgBx">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="100%"
                  src="${id}"
                  preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#55595c"/>
             </img>
           </div>
-          <div className="content">
-            <div className="card-body">
-              <h3 className="card-text">Titulo: ${title}</h3>
-              <p className="card-text">Autor: ${author}</p>
-              <p className="text-muted">Precio: ${price}</p>
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="btn-group btns">
-                  <button type="button" className="btn btn-sm btn-outline-secondary">Comprar</button>      
-                  <button type="button" className="btn btn-sm btn-outline-secondary">Añadir al carro</button>
+          <div class="content">
+            <div class="card-body">
+              <h3 class="card-text">Titulo: ${title}</h3>
+              <p class="card-text">Autor: ${author}</p>
+              <p class="text-muted">Precio: ${price}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group btns">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Comprar</button>      
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carro</button>
                 </div>
               </div>
             </div>

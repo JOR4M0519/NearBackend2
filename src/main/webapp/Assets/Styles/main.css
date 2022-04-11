@@ -6,23 +6,10 @@
   font-family: "Poppins" , sans-serif;
 }
 
-
 #form1{
   width: 600px;
   padding-left: 20px;
 
-}
-
-.btn-account:hover{
-  border: transparent;
-  border-color: transparent;
-}
-
-.btn-account{
-  overflow: hidden;
-  border: 0;
-  background: transparent;
-  border-color: transparent;
 }
 
 .img_header{
@@ -455,22 +442,19 @@
   }
 }
 .contenedor-login{
-
-  float: left; 
-  position: relative;
-  margin-top: 2%;
-  margin-left: 15%;
+  margin: 0%;
   position: fixed;
 }
 
 .contenedor-form-login{
-  width: 30%;
-  padding: 3%;
-  margin-top: 2%;
-  margin-left: 2.5%;
+  margin: 0%;
   background-color: rgba(240, 35, 45, 0.541);
   border-radius: 20px;
   position: absolute;
+  width: 42%;
+  height: 60%;
+  right: 49%;
+  top: 30%;
 }
 
 form#form-login{
@@ -552,7 +536,7 @@ input[type=submit]#login-submit{
   height: 210px;
   opacity: 1;
   visibility: visible;
-  background-color: rgba(255, 255, 255, 0.432);
+  background-color: rgba(255, 255, 255, 0.900);
 }
 
 .card:hover .content h3{
@@ -595,7 +579,7 @@ input[type=submit]#login-submit{
   width: 13%;
   margin-left: 1%;
   margin-top: 2%;
-} 
+}
 
 .contenedor .info #text-icono{
   margin-top: 0.5%;
@@ -628,5 +612,13 @@ input[type=submit]#login-submit{
   margin-bottom: 5%;
 }
 
+#fcoins
+{
+  width: 1000px;
+}
 
-
+.coin{
+  position: absolute;
+  padding-left: 38%;
+  padding-top: 5%;
+}

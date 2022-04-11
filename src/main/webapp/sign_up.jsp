@@ -82,7 +82,15 @@
         swal({
           title: "Cuenta Existente!",
           text: "Intente Nuevamente.",
-          imageUrl: 'src/main/webapp/Assets/img/error.png'
+          imageUrl: './Assets/img/error.png'
+        });
+      }
+      if(status=="failed2"){
+
+        swal({
+          title: "Rol Existente!",
+          text: "Intente Con Otro Rol.",
+          imageUrl: './Assets/img/error.png'
         });
       }
 

@@ -1,6 +1,7 @@
 package co.edu.unbosque.nearbackend;
 
 import co.edu.unbosque.nearbackend.services.UserService;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,6 +32,18 @@ public class UploadNft extends HttpServlet {
         message = "Hello World!";
     }
 
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html");
+        String author = request.getParameter("author");
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("./createNFT.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
@@ -41,7 +54,7 @@ public class UploadNft extends HttpServlet {
         String tittle = request.getParameter("titulo");
         String price = request.getParameter("precio");
         //BUSCAR
-        String author = request.getParameter("username");
+        String author = request.getParameter("author");
 
         String uploadPath = getServletContext().getRealPath("")+File.separator+"NFTS";
 

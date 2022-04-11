@@ -32,12 +32,13 @@
 
       <form action="./uploadNft" method="post" enctype="multipart/form-data" >
       <% 
-        String author = "4"+request.getParameter("username");
+        String author = request.getParameter("username");
+          System.out.println("Dataname: "+author);
       %>
         
       <div class="form-group" >
         <label for="name" >Author:</label>
-        <input class="form-control" style="pointer-events:none;" id="name" name="author" placeholder=<%= author%>>
+        <input class="form-control" style="pointer-events:none;" id="name" name="author" placeholder="<%=author %>">
       </div>  
         
       <div class="form-group" >

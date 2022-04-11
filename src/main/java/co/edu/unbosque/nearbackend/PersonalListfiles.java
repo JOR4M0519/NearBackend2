@@ -26,6 +26,8 @@ public class PersonalListfiles extends HttpServlet {
 
         // Specifying the content type for the response
         response.setContentType("application/json");
+        String email = String.valueOf(request.getAttribute("email"));
+        System.out.println("Este es el email: " + email);
 
         uService = new UserService();
 
@@ -37,9 +39,6 @@ public class PersonalListfiles extends HttpServlet {
         String uploadPath = getServletContext().getRealPath("")+File.separator+UPLOAD_DIRECTORY;
 
         File uploadDir = new File(uploadPath);
-
-        email = "sprieto@gmail.com";
-        System.out.println(email);
 
         // Listing file names in path
         //id,extension,title,author,price,likes,email_owner

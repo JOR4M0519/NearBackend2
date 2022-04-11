@@ -42,6 +42,8 @@ public class SignUp extends HttpServlet {
 
         User userFounded = users.stream().filter(user -> username.equals(user.getUsername()) && role.equals(user.getRole()))
                 .findFirst().orElse(null);
+        User userFounded2 = users.stream().filter(user -> username.equals(user.getUsername())  && !role.equals(user.getRole()))
+                .findFirst().orElse(null);
 
         RequestDispatcher dispatcher =null;
 
@@ -51,13 +53,23 @@ public class SignUp extends HttpServlet {
 
             new UserService().createUser(username, name, lastname, password, role, "0",getServletContext().getRealPath("") + File.separator);
             request.setAttribute("name", name);
+            request.setAttribute("role", role);
+            uService.setRuta(getServletContext().getRealPath("").replace("NEArBackend-1.0-SNAPSHOT","")+ "classes"+File.separator+"FCoins.csv");
+            request.setAttribute("fcoins", uService.amountMoney(username));
             dispatcher = request.getRequestDispatcher("./index.jsp");
 
 
         }else{
+           if(userFounded2!=null){
+               request.setAttribute("status", "failed");
+               dispatcher = request.getRequestDispatcher("./sign_up.jsp");
+            }
+           else if(userFounded!=null) {
+               request.setAttribute("status", "failed2");
+               System.out.println("failed2");
+               dispatcher = request.getRequestDispatcher("./sign_up.jsp");
 
-            request.setAttribute("status", "failed");
-            dispatcher = request.getRequestDispatcher("./sign_up.jsp");
+           }
 
         }
         try {
